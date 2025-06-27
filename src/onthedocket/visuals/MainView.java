@@ -21,7 +21,7 @@ public class MainView extends JFrame {
 	}
 	
 	private void initializeCalendar() {
-		Calendar calendar = new Calendar(25, 8);
+		Calendar calendar = new Calendar(48, 8);
 		contentPane.add(calendar, BorderLayout.CENTER);
 	}
 }

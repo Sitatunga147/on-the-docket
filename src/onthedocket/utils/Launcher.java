@@ -1,4 +1,4 @@
-package onthedocket.models;
+package onthedocket.utils;
 
 import onthedocket.visuals.MainView;
 
