@@ -19,10 +19,14 @@ public class Calendar extends JPanel {
 		emptyCell.setBackground(Color.WHITE);
 		
 		for(String d : DAYS) {
+			JPanel headerCell = new JPanel(new BorderLayout());
 			JLabel label = new JLabel(d, SwingConstants.CENTER);
-			label.setFont(label.getFont().deriveFont(Font.BOLD));
+			label.setFont(new Font(Font.SERIF, Font.BOLD, 18));
 			label.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-			add(label);
+			headerCell.setBackground(Color.BLACK);
+			label.setForeground(Color.WHITE);
+			headerCell.add(label);
+			add(headerCell);
 		}
 		
 		
@@ -34,21 +38,19 @@ public class Calendar extends JPanel {
 				if(c != 0) {
 					cell.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 				} else {
+					MilitaryTime militaryTime;
 					if(rows>24) {
-						MilitaryTime militaryTime;
 						if(r%2 == 0) { militaryTime = new MilitaryTime(hourComponent, 0); }
 						else {
 							militaryTime = new MilitaryTime(hourComponent, 30);
 							hourComponent++;
 						}
-						
-						JLabel timeLabel = new JLabel(militaryTime.getStandardTime().toString(), SwingConstants.CENTER);
-						cell.add(timeLabel);
 					} else {
-						MilitaryTime militaryTime = new MilitaryTime(r, 0);
-						JLabel timeLabel = new JLabel(militaryTime.getStandardTime().toString(), SwingConstants.CENTER);
-						cell.add(timeLabel);
+						militaryTime = new MilitaryTime(r, 0);
 					}
+					JLabel timeLabel = new JLabel(militaryTime.getStandardTime().toString(), SwingConstants.CENTER);
+					timeLabel.setFont(new Font(Font.DIALOG, Font.PLAIN, 15));
+					cell.add(timeLabel);
 				}
 				
 				cell.setBackground(Color.WHITE);
